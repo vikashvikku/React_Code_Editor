@@ -1,4 +1,4 @@
-# CipherStudio - Online React IDE
+# React Code Editor - Online React IDE
 
 A browser-based React IDE that allows users to create, edit, and preview React applications directly in the browser. Built with React, Node.js, Express, and MongoDB.
 
