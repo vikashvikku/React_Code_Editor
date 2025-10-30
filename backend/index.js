@@ -58,7 +58,7 @@ async function startServer() {
     const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
 
 server.listen(PORT, HOST, () => {
-  console.log(Server is Running on http://${HOST}:${PORT});
+  console.log(`Server is Running on http://${HOST}:${PORT}`);
 });
   } catch (error) {
     console.error(`❌ Error while starting the server:`, error);
