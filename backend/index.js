@@ -23,7 +23,7 @@ const allowedOrigins = [
   "http://localhost:3000", // CRA default
   "http://localhost:5173", // Vite default
   "http://127.0.0.1:5173",
-  "https://react-code-editor-frontend.onrender.com", // ✅ your production frontend
+  https://react-code-editor-wkll.vercel.app, // ✅ your production frontend
 ];
 
 server.use(
