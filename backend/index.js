@@ -23,7 +23,7 @@ const allowedOrigins = [
   "http://localhost:3000", // CRA default
   "http://localhost:5173", // Vite default
   "http://127.0.0.1:5173",
-  https://react-code-editor-wkll.vercel.app, // ✅ your production frontend
+  "https://react-code-editor-wkll.vercel.app", // ✅ your production frontend (string missing before)
 ];
 
 server.use(
@@ -53,7 +53,7 @@ server.use(RequestLoggerMiddleware);
 // ============ Routes ============
 server.use("/api/v1", v1Router);
 
-// Root route (optional)
+// ✅ Root route (for health check)
 server.get("/", (req, res) => {
   res.send("🚀 CipherStudio Backend is running successfully!");
 });
