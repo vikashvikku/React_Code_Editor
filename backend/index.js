@@ -10,27 +10,30 @@ dotenv.config();
 // =================================
 
 // ========== ENVIRONMENT VARIABLES ==========
-
+const PORT = process.env.PORT || 4000;
 const NODE_ENV = process.env.NODE_ENV || "development";
+const IS_PRODUCTION = NODE_ENV === "production";
 // =========================================
 
 // ============ Server ============
 const server = express();
 
-// ✅ Strong CORS configuration
+// ✅ Dynamic CORS configuration
 const allowedOrigins = [
   "http://localhost:3000", // CRA default
   "http://localhost:5173", // Vite default
   "http://127.0.0.1:5173",
+  "https://react-code-editor-frontend.onrender.com", // ✅ your production frontend
 ];
 
 server.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like Postman or curl)
+      // Allow requests with no origin (like Postman or server-side calls)
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.warn(`❌ CORS blocked request from origin: ${origin}`);
         callback(new Error("Not allowed by CORS"));
       }
     },
@@ -40,7 +43,7 @@ server.use(
   })
 );
 
-// ✅ Automatically respond to preflight (OPTIONS) requests
+// ✅ Automatically handle preflight requests
 server.options("*", cors());
 
 // ✅ JSON + logging middleware
@@ -49,17 +52,23 @@ server.use(RequestLoggerMiddleware);
 
 // ============ Routes ============
 server.use("/api/v1", v1Router);
+
+// Root route (optional)
+server.get("/", (req, res) => {
+  res.send("🚀 CipherStudio Backend is running successfully!");
+});
 // ================================
 
 // ============ Start Server ============
 async function startServer() {
   try {
-    await connectToDB(); // connect to db
+    await connectToDB();
 
-    const PORT = process.env.PORT || 4000;
-
+    // ✅ Always listen on 0.0.0.0 so Render can detect the open port
     server.listen(PORT, "0.0.0.0", () => {
-      console.log(`✅ Server is running on port ${PORT}`);
+      console.log(
+        `✅ Server running in ${NODE_ENV} mode on http://0.0.0.0:${PORT}`
+      );
     });
   } catch (error) {
     console.error("❌ Error while starting the server:", error);
@@ -67,5 +76,4 @@ async function startServer() {
 }
 
 startServer();
-
 // ================================
