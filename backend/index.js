@@ -10,7 +10,7 @@ dotenv.config();
 // =================================
 
 // ========== ENVIRONMENT VARIABLES ==========
-const PORT = process.env.PORT || 4000;
+
 const NODE_ENV = process.env.NODE_ENV || "development";
 // =========================================
 
@@ -55,15 +55,17 @@ server.use("/api/v1", v1Router);
 async function startServer() {
   try {
     await connectToDB(); // connect to db
-    const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
 
-server.listen(PORT, HOST, () => {
-  console.log(`Server is Running on http://${HOST}:${PORT}`);
-});
+    const PORT = process.env.PORT || 4000;
+
+    server.listen(PORT, "0.0.0.0", () => {
+      console.log(`✅ Server is running on port ${PORT}`);
+    });
   } catch (error) {
-    console.error(`❌ Error while starting the server:`, error);
+    console.error("❌ Error while starting the server:", error);
   }
 }
 
 startServer();
+
 // ================================
