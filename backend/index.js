@@ -55,9 +55,11 @@ server.use("/api/v1", v1Router);
 async function startServer() {
   try {
     await connectToDB(); // connect to db
-    server.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT} [${NODE_ENV}]`);
-    });
+    const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
+
+server.listen(PORT, HOST, () => {
+  console.log(Server is Running on http://${HOST}:${PORT});
+});
   } catch (error) {
     console.error(`❌ Error while starting the server:`, error);
   }
