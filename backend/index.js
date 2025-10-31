@@ -6,8 +6,6 @@ import { RequestLoggerMiddleware } from "./src/middlewares/requestlogger.middlew
 import { connectToDB } from "./src/db/db.js";
 
 dotenv.config();
-
-
 const PORT = process.env.PORT || 4000;
 const NODE_ENV = process.env.NODE_ENV || "development";
 const IS_PRODUCTION = NODE_ENV === "production";
@@ -24,6 +22,7 @@ const allowedOrigins = [
 server.use(
   cors({
     origin: function (origin, callback) {
+      
       // Allow requests with no origin (like Postman or server-side calls)
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
@@ -48,9 +47,9 @@ server.use("/api/v1", v1Router);
 server.get("/", (req, res) => {
   res.send(" CipherStudio Backend is running successfully!");
 });
-// ================================
 
-// ============ Start Server ============
+
+//  Starting the Server 
 async function startServer() {
   try {
     await connectToDB();
