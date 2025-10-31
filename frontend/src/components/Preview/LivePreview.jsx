@@ -7,7 +7,7 @@ export const LivePreview = ({ files, activeFile }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // 🧠 Remove problematic imports and exports
+  //  Remove problematic imports and exports
   const sanitizeCode = (code) => {
     if (!code) return "";
 
@@ -103,13 +103,13 @@ export const LivePreview = ({ files, activeFile }) => {
     `;
   };
 
-  // ✅ Memoize generated HTML
+  // Memoize generated HTML
   const html = useMemo(
     () => generateHTML(),
     [JSON.stringify(files), activeFile]
   );
 
-  // ✅ Debounced refresh
+  // Debounced refresh
   useEffect(() => {
     if (Object.keys(files).length > 0) {
       setIsLoading(true);
