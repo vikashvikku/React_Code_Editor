@@ -98,7 +98,7 @@ const HomePage = () => {
 
   return (
     <div className={`home-page ${isDark ? "dark" : "light"}`}>
-      {/* ✅ Beautiful Header */}
+      {/*   Header */}
       <header className="header">
         <div className="header-content">
           <div className="header-left">
@@ -125,7 +125,7 @@ const HomePage = () => {
         </div>
       </header>
 
-      {/* ✅ Main Content */}
+      {/* Main Content */}
       <main className="main-content">
         <div className="projects-header">
           <h2>Your Projects</h2>
