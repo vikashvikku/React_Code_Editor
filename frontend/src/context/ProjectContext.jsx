@@ -25,9 +25,9 @@ export const ProjectProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // ====== API ACTIONS ======
+  //  API ACTIONS 
 
-  // 🟩 Load all projects for a user
+  //  Load all projects for a user
   const loadProjects = useCallback(async (userId) => {
     try {
       setIsLoading(true);
@@ -42,7 +42,7 @@ export const ProjectProvider = ({ children }) => {
     }
   }, []);
 
-  // 🟦 Load a specific project
+  //  Load a specific project
   const loadProject = useCallback(async (projectId) => {
     try {
       setIsLoading(true);
@@ -66,7 +66,7 @@ export const ProjectProvider = ({ children }) => {
     }
   }, []);
 
-  // 🟨 Create new project
+  //  Create new project
   const createProject = useCallback(async (projectData) => {
     try {
       setIsLoading(true);
@@ -84,7 +84,7 @@ export const ProjectProvider = ({ children }) => {
     }
   }, []);
 
-  // 🟧 Update project
+  //  Update project
   const updateProject = useCallback(async (projectId, updates) => {
     try {
       setIsLoading(true);
@@ -107,7 +107,7 @@ export const ProjectProvider = ({ children }) => {
     }
   }, []);
 
-  // 🟥 Delete project
+  //  Delete project
   const deleteProject = useCallback(
     async (projectId) => {
       try {
@@ -132,7 +132,7 @@ export const ProjectProvider = ({ children }) => {
     [currentProject]
   );
 
-  // ====== FILE ACTIONS ======
+  //  FILE ACTIONS 
   const createFile = useCallback(
     (fileName, content = "") => {
       const newFiles = { ...files, [fileName]: content };
@@ -180,7 +180,7 @@ export const ProjectProvider = ({ children }) => {
     [files, activeFile]
   );
 
-  // ====== MEMOIZED CONTEXT VALUE ======
+  //  MEMOIZED CONTEXT VALUE 
   const value = useMemo(
     () => ({
       currentProject,
