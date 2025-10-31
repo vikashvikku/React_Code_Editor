@@ -34,7 +34,7 @@ const EditorPage = () => {
   const [fileToRename, setFileToRename] = useState(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  // ✅ Prevent multiple API calls
+  // Prevent multiple API calls
   const hasLoaded = useRef(false);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const EditorPage = () => {
     }
   }, [projectId, navigate, loadProject]);
 
-  // ===== File Handlers =====
+  //  File Handlers 
   const handleFileSelect = (fileName) => setActiveFile(fileName);
 
   const handleFileCreate = (fileName, content = "") => {
@@ -78,7 +78,7 @@ const EditorPage = () => {
     setShowRenameFileModal(true);
   };
 
-  // ===== Loading / Error States =====
+  //  Loading / Error States 
   if (isLoading) return <Loader />;
 
   if (!currentProject) {
@@ -98,7 +98,7 @@ const EditorPage = () => {
     );
   }
 
-  // ===== Main Layout =====
+  //  Main Layout 
   return (
     <div className={`editor-page ${isDark ? "dark" : "light"}`}>
       <Navbar
