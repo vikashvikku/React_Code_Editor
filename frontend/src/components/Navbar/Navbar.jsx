@@ -11,7 +11,7 @@ export const Navbar = ({ project, onToggleSidebar, sidebarCollapsed }) => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
 
-  // ✅ Close dropdown when clicking outside
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -55,7 +55,7 @@ export const Navbar = ({ project, onToggleSidebar, sidebarCollapsed }) => {
         </div>
       </div>
 
-      {/* === Center Section === */}
+      {/*  Center Section  */}
       <div className="navbar-center">
         <button onClick={handleSave} className="navbar-action save-btn">
           <Save size={18} />
@@ -63,7 +63,7 @@ export const Navbar = ({ project, onToggleSidebar, sidebarCollapsed }) => {
         </button>
       </div>
 
-      {/* === Right Section === */}
+      {/*  Right Section  */}
       <div className="navbar-right">
         <ThemeToggle />
 
