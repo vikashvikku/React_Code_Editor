@@ -1,17 +1,13 @@
-// =================================
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
-// =================================
 
-// ========= env config =============
 const NODE_ENV = process.env.NODE_ENV;
 const DEV_MONGODB_URI = process.env.DEV_MONGODB_URI;
-// =================================
 
 
-// ========= connect to db ==========
+// connect to db 
 async function connectToDB() {
     try {
         if(!DEV_MONGODB_URI){
@@ -25,7 +21,6 @@ async function connectToDB() {
         process.exit(1);
     }
 };
-// =================================
 
 export {
     connectToDB
